@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 BASE_URL = "https://broneering.mfa.ee/en"
 TARGET_EMBASSY = "Embassy of the Republic of Estonia in New Delhi"
 TARGET_SERVICE = "Long-stay visa (D-visa) application"
+EMBASSY_VALUE = "40"  # hardcoded — confirmed from previous run
 
 
 def get_services_for_embassy():
@@ -19,84 +20,119 @@ def get_services_for_embassy():
             "User-Agent": (
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                 "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/120.0.0.0 Safari/537.36"
-            )
+                "Chrome/124.0.0.0 Safari/537.36"
+            ),
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
         }
     )
 
-    # Step 1: Load the main page to get the form + session cookie
-    resp = session.get(BASE_URL, timeout=15)
+    # ── Step 1: Load main page ────────────────────────────────────────────────
+    print(f"[1] GET {BASE_URL}")
+    resp = session.get(BASE_URL, timeout=20)
     resp.raise_for_status()
+    print(f"    → {resp.status_code}  final URL: {resp.url}")
+
     soup = BeautifulSoup(resp.text, "html.parser")
 
-    # Find the embassy select and get the value for New Delhi
-    embassy_select = soup.find("select", {"name": "unit"}) or soup.find("select")
-    if not embassy_select:
-        raise RuntimeError("Could not find embassy dropdown on the page.")
-
-    embassy_value = None
-    for option in embassy_select.find_all("option"):
-        if TARGET_EMBASSY.lower() in option.text.strip().lower():
-            embassy_value = option.get("value", option.text.strip())
-            break
-
-    if embassy_value is None:
-        raise RuntimeError(f"Could not find '{TARGET_EMBASSY}' in dropdown options.")
-
-    print(f"Found embassy option: '{TARGET_EMBASSY}' (value={embassy_value})")
-
-    # Step 2: POST the form selecting New Delhi to get the services dropdown
-    # Find the form action
+    # Print raw form details so we know exactly what to submit
     form = soup.find("form")
-    form_action = BASE_URL
-    if form and form.get("action"):
-        action = form["action"]
-        if action.startswith("http"):
-            form_action = action
-        else:
-            form_action = "https://broneering.mfa.ee" + action
-
-    # Collect all hidden inputs
-    payload = {}
-    for hidden in soup.find_all("input", {"type": "hidden"}):
-        if hidden.get("name"):
-            payload[hidden["name"]] = hidden.get("value", "")
-
-    # Add the embassy selection
-    payload["unit"] = embassy_value
-
-    # Also look for person count field
-    persons_select = soup.find("select", {"name": "persons"})
-    if persons_select:
-        first_option = persons_select.find("option")
-        if first_option:
-            payload["persons"] = first_option.get("value", "1")
+    if form:
+        print(f"    Form action={form.get('action')!r}  method={form.get('method')!r}")
+        for inp in form.find_all(["input", "select", "button"]):
+            print(
+                f"      <{inp.name}> name={inp.get('name')!r} type={inp.get('type')!r} value={inp.get('value')!r}"
+            )
     else:
-        payload["persons"] = "1"
+        print("    ⚠ No <form> found on page!")
+        print("    RAW HTML (first 3000 chars):")
+        print(resp.text[:3000])
+        raise RuntimeError("No form on main page")
 
-    resp2 = session.post(form_action, data=payload, timeout=15)
-    resp2.raise_for_status()
+    # ── Build payload ─────────────────────────────────────────────────────────
+    payload = {}
+    for inp in form.find_all("input"):
+        if inp.get("name"):
+            payload[inp["name"]] = inp.get("value", "")
 
+    # Embassy select
+    embassy_sel = form.find("select", {"name": True})
+    if embassy_sel:
+        payload[embassy_sel["name"]] = EMBASSY_VALUE
+    else:
+        payload["unit"] = EMBASSY_VALUE
+
+    # Persons select — pick first valid option value
+    for sel in form.find_all("select"):
+        if sel.get("name") and sel.get("name") != (
+            embassy_sel.get("name") if embassy_sel else "unit"
+        ):
+            first_opt = sel.find("option", value=True)
+            payload[sel["name"]] = first_opt["value"] if first_opt else "1"
+
+    # ── Determine submit URL ──────────────────────────────────────────────────
+    action = form.get("action", "")
+    method = form.get("method", "get").lower()
+
+    if not action or action in ("/en", "/en/", "en"):
+        # Try common next-step paths
+        # The submit button text says "To the next page" — try /en with POST
+        form_url = "https://broneering.mfa.ee/en"
+    elif action.startswith("http"):
+        form_url = action
+    else:
+        form_url = "https://broneering.mfa.ee" + action
+
+    print(f"\n[2] {method.upper()} {form_url}")
+    print(f"    payload: {payload}")
+
+    if method == "post":
+        resp2 = session.post(form_url, data=payload, timeout=20)
+    else:
+        resp2 = session.get(form_url, params=payload, timeout=20)
+
+    print(f"    → {resp2.status_code}  final URL: {resp2.url}")
+
+    if not resp2.ok:
+        # Try the other method as fallback
+        alt_method = "get" if method == "post" else "post"
+        print(f"    ⚠ Got {resp2.status_code}, trying {alt_method.upper()} instead...")
+        if alt_method == "post":
+            resp2 = session.post(form_url, data=payload, timeout=20)
+        else:
+            resp2 = session.get(form_url, params=payload, timeout=20)
+        print(f"    → {resp2.status_code}  final URL: {resp2.url}")
+        resp2.raise_for_status()
+
+    # ── Step 3: Parse services dropdown ──────────────────────────────────────
+    print(f"\n[3] Parsing services page...")
     soup2 = BeautifulSoup(resp2.text, "html.parser")
 
-    # Step 3: Look for the services dropdown
+    # Print ALL selects
+    all_selects = soup2.find_all("select")
+    print(f"    Found {len(all_selects)} <select>(s):")
+    for sel in all_selects:
+        opts = [o.text.strip() for o in sel.find_all("option") if o.text.strip()]
+        print(f"      select[{sel.get('name')!r}]: {opts}")
+
+    # Also print any forms on this page
+    for f2 in soup2.find_all("form"):
+        print(f"    Form2 action={f2.get('action')!r} method={f2.get('method')!r}")
+
     services = []
-    for select in soup2.find_all("select"):
-        options = [o.text.strip() for o in select.find_all("option") if o.text.strip()]
-        # Heuristic: the services select will contain visa-related text
+    for sel in all_selects:
+        opts = [o.text.strip() for o in sel.find_all("option") if o.text.strip()]
         if any(
-            "visa" in o.lower() or "service" in o.lower() or "application" in o.lower()
-            for o in options
+            "visa" in o.lower() or "application" in o.lower() or "service" in o.lower()
+            for o in opts
         ):
-            services = options
+            services = opts
             break
 
-    # Fallback: grab all option texts from the page
     if not services:
-        all_options = [
-            o.text.strip() for o in soup2.find_all("option") if o.text.strip()
-        ]
-        services = all_options
+        print("    No service-like dropdown found. All page options:")
+        services = [o.text.strip() for o in soup2.find_all("option") if o.text.strip()]
+        print(f"    {services}")
 
     return services
 
@@ -106,20 +142,16 @@ def send_email_notification(services_found):
     recipient = os.environ["GMAIL_RECIPIENT"]
     app_password = os.environ["GMAIL_APP_PASSWORD"]
 
-    subject = "🇪🇪 Estonia D-Visa Slot Available in New Delhi!"
-    body = f"""Good news! The Estonia visa booking portal now shows the D-visa option for New Delhi.
-
-Service detected: "{TARGET_SERVICE}"
-
-Book your appointment now:
-{BASE_URL}
-
---- All services currently listed for New Delhi ---
-{chr(10).join(f"  • {s}" for s in services_found)}
-
----
-This is an automated alert from your Estonia Visa Checker.
-"""
+    subject = "🇪🇪 Estonia D-Visa Now Available in New Delhi!"
+    body = (
+        "Good news!\n\n"
+        "The Estonia MFA booking portal now lists the D-visa option for New Delhi:\n\n"
+        f'  "{TARGET_SERVICE}"\n\n'
+        f"Book your appointment here:\n{BASE_URL}\n\n"
+        "--- All services currently listed for New Delhi ---\n"
+        + "\n".join(f"  • {s}" for s in services_found)
+        + "\n\n---\nSent by your Estonia Visa Checker (GitHub Actions).\n"
+    )
 
     msg = MIMEMultipart()
     msg["From"] = sender
@@ -135,30 +167,32 @@ This is an automated alert from your Estonia Visa Checker.
 
 
 def main():
-    print(f"Checking Estonia visa portal for D-visa availability in New Delhi...")
+    print("=" * 60)
+    print("Estonia D-Visa Availability Checker")
+    print(f"Embassy value: {EMBASSY_VALUE} ({TARGET_EMBASSY})")
+    print("=" * 60)
 
     try:
         services = get_services_for_embassy()
     except Exception as e:
-        print(f"❌ Error fetching services: {e}")
+        print(f"\n❌ Error: {e}")
         sys.exit(1)
 
     print(f"\nServices found ({len(services)}):")
     for s in services:
         print(f"  • {s}")
 
-    # Check if D-visa option exists
     dvisa_found = any(TARGET_SERVICE.lower() in s.lower() for s in services)
 
     if dvisa_found:
-        print(f"\n🎉 D-visa option IS available! Sending email notification...")
+        print(f"\n🎉 D-visa IS available! Sending email...")
         try:
             send_email_notification(services)
         except Exception as e:
-            print(f"❌ Failed to send email: {e}")
+            print(f"❌ Email failed: {e}")
             sys.exit(1)
     else:
-        print(f"\n⏳ D-visa option not yet available. No notification sent.")
+        print(f"\n⏳ D-visa not yet available.")
 
 
 if __name__ == "__main__":
