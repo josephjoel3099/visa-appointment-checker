@@ -7,10 +7,9 @@ from email.mime.text import MIMEText
 import requests
 from bs4 import BeautifulSoup
 
-BASE_URL = "https://broneering.mfa.ee/en"
+BASE_URL = "https://broneering.mfa.ee/en/"
 TARGET_EMBASSY = "Embassy of the Republic of Estonia in New Delhi"
 TARGET_SERVICE = "Long-stay visa (D-visa) application"
-EMBASSY_VALUE = "40"  # hardcoded — confirmed from previous run
 
 
 def get_services_for_embassy():
@@ -24,100 +23,93 @@ def get_services_for_embassy():
             ),
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "Accept-Language": "en-US,en;q=0.9",
+            "Referer": BASE_URL,
         }
     )
 
-    # ── Step 1: Load main page ────────────────────────────────────────────────
+    # ── Step 1: Load main page, grab CSRF token + embassy value ──────────────
     print(f"[1] GET {BASE_URL}")
     resp = session.get(BASE_URL, timeout=20)
     resp.raise_for_status()
     print(f"    → {resp.status_code}  final URL: {resp.url}")
 
     soup = BeautifulSoup(resp.text, "html.parser")
-
-    # Print raw form details so we know exactly what to submit
     form = soup.find("form")
-    if form:
-        print(f"    Form action={form.get('action')!r}  method={form.get('method')!r}")
-        for inp in form.find_all(["input", "select", "button"]):
-            print(
-                f"      <{inp.name}> name={inp.get('name')!r} type={inp.get('type')!r} value={inp.get('value')!r}"
-            )
-    else:
-        print("    ⚠ No <form> found on page!")
-        print("    RAW HTML (first 3000 chars):")
-        print(resp.text[:3000])
-        raise RuntimeError("No form on main page")
+    if not form:
+        raise RuntimeError("No <form> found on main page.")
 
-    # ── Build payload ─────────────────────────────────────────────────────────
+    # Collect all hidden inputs (includes CSRF token)
     payload = {}
     for inp in form.find_all("input"):
         if inp.get("name"):
             payload[inp["name"]] = inp.get("value", "")
 
-    # Embassy select
+    # Find embassy select and resolve New Delhi's value
     embassy_sel = form.find("select", {"name": True})
-    if embassy_sel:
-        payload[embassy_sel["name"]] = EMBASSY_VALUE
-    else:
-        payload["unit"] = EMBASSY_VALUE
+    if not embassy_sel:
+        raise RuntimeError("Embassy <select> not found.")
 
-    # Persons select — pick first valid option value
-    for sel in form.find_all("select"):
-        if sel.get("name") and sel.get("name") != (
-            embassy_sel.get("name") if embassy_sel else "unit"
-        ):
-            first_opt = sel.find("option", value=True)
-            payload[sel["name"]] = first_opt["value"] if first_opt else "1"
+    embassy_field = embassy_sel["name"]
+    embassy_value = None
+    for opt in embassy_sel.find_all("option"):
+        if TARGET_EMBASSY.lower() in opt.text.strip().lower():
+            embassy_value = opt.get("value") or opt.text.strip()
+            break
+    if not embassy_value:
+        raise RuntimeError(f"'{TARGET_EMBASSY}' not found in embassy dropdown.")
 
-    # ── Determine submit URL ──────────────────────────────────────────────────
-    action = form.get("action", "")
-    method = form.get("method", "get").lower()
+    payload[embassy_field] = embassy_value
+    print(f"    Embassy field: {embassy_field!r} = {embassy_value!r}")
 
-    if not action or action in ("/en", "/en/", "en"):
-        # Try common next-step paths
-        # The submit button text says "To the next page" — try /en with POST
-        form_url = "https://broneering.mfa.ee/en"
-    elif action.startswith("http"):
-        form_url = action
-    else:
-        form_url = "https://broneering.mfa.ee" + action
+    # Person count field (text input, default already '1')
+    # It's already in payload from the hidden/text inputs scan above.
 
-    print(f"\n[2] {method.upper()} {form_url}")
-    print(f"    payload: {payload}")
+    # ── CRITICAL: include the 'edasi' (Next) submit button ───────────────────
+    # Without this the server doesn't know which button was clicked and returns 404
+    payload["edasi"] = ""
 
-    if method == "post":
-        resp2 = session.post(form_url, data=payload, timeout=20)
-    else:
-        resp2 = session.get(form_url, params=payload, timeout=20)
+    # POST to trailing-slash URL (avoid redirect that loses POST body)
+    post_url = resp.url  # use the final redirected URL so session cookies match
+    print(f"\n[2] POST {post_url}")
+    print(f"    payload keys: {list(payload.keys())}")
 
+    session.headers["Referer"] = post_url
+    resp2 = session.post(post_url, data=payload, timeout=20, allow_redirects=True)
     print(f"    → {resp2.status_code}  final URL: {resp2.url}")
 
-    if not resp2.ok:
-        # Try the other method as fallback
-        alt_method = "get" if method == "post" else "post"
-        print(f"    ⚠ Got {resp2.status_code}, trying {alt_method.upper()} instead...")
-        if alt_method == "post":
-            resp2 = session.post(form_url, data=payload, timeout=20)
-        else:
-            resp2 = session.get(form_url, params=payload, timeout=20)
-        print(f"    → {resp2.status_code}  final URL: {resp2.url}")
-        resp2.raise_for_status()
+    if resp2.status_code == 404 or resp2.url == post_url:
+        # If still on same page, the server may want Content-Type: application/x-www-form-urlencoded
+        # and the Origin header set
+        session.headers["Origin"] = "https://broneering.mfa.ee"
+        session.headers["Content-Type"] = "application/x-www-form-urlencoded"
+        resp2 = session.post(post_url, data=payload, timeout=20, allow_redirects=True)
+        print(f"    retry → {resp2.status_code}  final URL: {resp2.url}")
 
-    # ── Step 3: Parse services dropdown ──────────────────────────────────────
-    print(f"\n[3] Parsing services page...")
+    resp2.raise_for_status()
+
+    # ── Step 3: Parse services dropdown from step-2 page ─────────────────────
+    print(f"\n[3] Parsing step-2 page for services...")
     soup2 = BeautifulSoup(resp2.text, "html.parser")
 
-    # Print ALL selects
     all_selects = soup2.find_all("select")
     print(f"    Found {len(all_selects)} <select>(s):")
     for sel in all_selects:
         opts = [o.text.strip() for o in sel.find_all("option") if o.text.strip()]
-        print(f"      select[{sel.get('name')!r}]: {opts}")
+        print(f"      [{sel.get('name')!r}]: {opts}")
 
-    # Also print any forms on this page
-    for f2 in soup2.find_all("form"):
-        print(f"    Form2 action={f2.get('action')!r} method={f2.get('method')!r}")
+    # Check if we're still on the same page (POST didn't advance)
+    if len(all_selects) == 1 and any(
+        TARGET_EMBASSY.lower() in o.text.lower()
+        for o in all_selects[0].find_all("option")
+    ):
+        print("\n    ⚠ Still on step-1 page — POST did not advance the form.")
+        print(
+            "    Page title:",
+            soup2.find("title").text if soup2.find("title") else "N/A",
+        )
+        print("    Dumping raw HTML (first 2000 chars):")
+        print(resp2.text[:2000])
+        raise RuntimeError("Form submission did not advance to step 2.")
 
     services = []
     for sel in all_selects:
@@ -127,12 +119,12 @@ def get_services_for_embassy():
             for o in opts
         ):
             services = opts
+            print(f"    → Services from select[{sel.get('name')!r}]")
             break
 
     if not services:
-        print("    No service-like dropdown found. All page options:")
+        # Fallback: all options on page
         services = [o.text.strip() for o in soup2.find_all("option") if o.text.strip()]
-        print(f"    {services}")
 
     return services
 
@@ -169,7 +161,8 @@ def send_email_notification(services_found):
 def main():
     print("=" * 60)
     print("Estonia D-Visa Availability Checker")
-    print(f"Embassy value: {EMBASSY_VALUE} ({TARGET_EMBASSY})")
+    print(f"Target: {TARGET_EMBASSY}")
+    print(f"Service: {TARGET_SERVICE}")
     print("=" * 60)
 
     try:
