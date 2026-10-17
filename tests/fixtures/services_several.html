@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <meta name="referrer" content="strict-origin-when-cross-origin">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>Booking for an appointment to the consul</title>
+                            
+<link rel="stylesheet" href="/assets/styles/app-c59b51d5c639640022e332f115c5291e.css">
+<link rel="stylesheet" href="/assets/vendor/flatpickr/dist/flatpickr.min-f561804f3afc77a69137806e7aa8e72c.css">
+<script type="importmap" nonce="TESTNONCE" data-turbo-track="reload">
+{
+    "imports": {
+        "app": "/assets/app-61bd8bae811713601d07e408216b9795.js",
+        "/assets/bootstrap.js": "/assets/bootstrap-1ddfaa902f45067bac9cbc85b353431f.js",
+        "/assets/styles/app.css": "data:application/javascript,",
+        "@symfony/stimulus-bundle": "/assets/@symfony/stimulus-bundle/loader-870999a02e9fc147c034d522826ea70d.js",
+        "@hotwired/stimulus": "/assets/vendor/@hotwired/stimulus/stimulus.index-af27b0728a07bda78f2ee3ba84fd1d21.js",
+        "/assets/@symfony/stimulus-bundle/controllers.js": "/assets/@symfony/stimulus-bundle/controllers-c659a41cd459ac31a30f80a1270c9fef.js",
+        "/assets/@symfony/ux-turbo/turbo_controller.js": "/assets/@symfony/ux-turbo/turbo_controller-ce5e32dafdec0b7752f02e3e2cb25751.js",
+        "/assets/controllers/captcha_controller.js": "/assets/controllers/captcha_controller-a658f7c2a62390d0cdd6f2825f2fa8a2.js",
+        "/assets/controllers/form/turbo_controller.js": "/assets/controllers/form/turbo_controller-f047371565269214d3590aac2e3779f7.js",
+        "/assets/controllers/flatpickr_controller.js": "/assets/controllers/flatpickr_controller-f2c033a3a03bf551187902913a3999f9.js",
+        "/assets/controllers/broneering_controller.js": "/assets/controllers/broneering_controller-02466cc863ae670fc013b0f3414c59f9.js",
+        "/assets/controllers/crud_controller.js": "/assets/controllers/crud_controller-d246ce766147c802672252d290aaa254.js",
+        "@hotwired/turbo": "/assets/vendor/@hotwired/turbo/turbo.index-e673eeee48ff679f524833e318f415ca.js",
+        "stimulus-flatpickr": "/assets/vendor/stimulus-flatpickr/stimulus-flatpickr.index-53e13b57f684eed4db44b69d936534c5.js",
+        "moment": "/assets/vendor/moment/moment.index-00f717c28abd1fe2550df260e4fe1877.js",
+        "flatpickr/dist/l10n/et.js": "/assets/vendor/flatpickr/dist/l10n/et-408723e1d3125df5e3ce4ff89b4f1985.js",
+        "flatpickr/dist/flatpickr.min.css": "data:application/javascript,",
+        "flatpickr": "/assets/vendor/flatpickr/flatpickr.index-012257a4486c314580cdae508997a0aa.js",
+        "jquery": "/assets/vendor/jquery/jquery.index-320ce5db7d5a1437225818702b995851.js",
+        "flowbite": "/assets/vendor/flowbite/flowbite.index-d5d1ff3a1cf8cc3b902b7d2355c59e86.js",
+        "flowbite/dist/flowbite.min.css": "data:application/javascript,document.head.appendChild%28Object.assign%28document.createElement%28%22link%22%29%2C%7Brel%3A%22stylesheet%22%2Chref%3A%22%2Fassets%2Fvendor%2Fflowbite%2Fdist%2Fflowbite.min-ed2ec0eed5b8565e5ac404561d376c99.css%22%7D%29%29",
+        "toastr": "/assets/vendor/toastr/toastr.index-f456ed0fb3ee73a120b5f07aa980e850.js"
+    }
+}
+</script>
+<!-- ES Module Shims: Import maps polyfill for modules browsers without import maps support -->
+<script async src="https://ga.jspm.io/npm:es-module-shims@1.10.0/dist/es-module-shims.js" nonce="TESTNONCE" data-turbo-track="reload"></script>
+<link rel="modulepreload" href="/assets/app-61bd8bae811713601d07e408216b9795.js">
+<link rel="modulepreload" href="/assets/bootstrap-1ddfaa902f45067bac9cbc85b353431f.js">
+<link rel="modulepreload" href="/assets/@symfony/stimulus-bundle/loader-870999a02e9fc147c034d522826ea70d.js">
+<link rel="modulepreload" href="/assets/vendor/@hotwired/stimulus/stimulus.index-af27b0728a07bda78f2ee3ba84fd1d21.js">
+<link rel="modulepreload" href="/assets/@symfony/stimulus-bundle/controllers-c659a41cd459ac31a30f80a1270c9fef.js">
+<link rel="modulepreload" href="/assets/@symfony/ux-turbo/turbo_controller-ce5e32dafdec0b7752f02e3e2cb25751.js">
+<link rel="modulepreload" href="/assets/controllers/captcha_controller-a658f7c2a62390d0cdd6f2825f2fa8a2.js">
+<link rel="modulepreload" href="/assets/controllers/form/turbo_controller-f047371565269214d3590aac2e3779f7.js">
+<link rel="modulepreload" href="/assets/controllers/flatpickr_controller-f2c033a3a03bf551187902913a3999f9.js">
+<link rel="modulepreload" href="/assets/controllers/broneering_controller-02466cc863ae670fc013b0f3414c59f9.js">
+<link rel="modulepreload" href="/assets/controllers/crud_controller-d246ce766147c802672252d290aaa254.js">
+<link rel="modulepreload" href="/assets/vendor/@hotwired/turbo/turbo.index-e673eeee48ff679f524833e318f415ca.js">
+<link rel="modulepreload" href="/assets/vendor/stimulus-flatpickr/stimulus-flatpickr.index-53e13b57f684eed4db44b69d936534c5.js">
+<link rel="modulepreload" href="/assets/vendor/moment/moment.index-00f717c28abd1fe2550df260e4fe1877.js">
+<link rel="modulepreload" href="/assets/vendor/flatpickr/dist/l10n/et-408723e1d3125df5e3ce4ff89b4f1985.js">
+<link rel="modulepreload" href="/assets/vendor/flatpickr/flatpickr.index-012257a4486c314580cdae508997a0aa.js">
+<script type="module" nonce="TESTNONCE" data-turbo-track="reload">import 'app';</script>
+                <link rel="icon" type="image/x-icon" href="/assets/images/icons/favicon-1842dd4344b88ea3504d438dc6b49e01.ico" />
+    </head>
+    <body data-route="broneering" data-token="TESTTOKEN">
+            <div class="flex flex-col gap-2.5 max-h-screen overflow-auto">
+        <header class="mb-3">
+    <div class="border-b border-gray-200 px-4 py-2.5 shadow-sm">
+        <a href="/en/">
+            <img src="/assets/images/valismin_vapp-b0dda4428e4a56e6403f0cb316dadbc5.png" class="h-20" alt="Ministry of Foreign Affairs" title="Ministry of Foreign Affairs" />
+        </a>
+    </div>
+</header>
+
+        <div class="flex md:justify-center w-full">
+            <div class="flex flex-col gap-2.5 px-2.5 md:px-5 max-w-screen md:max-w-3xl md:border md:border-color-primary md:rounded md:py-2.5">
+                                    <a class="mb-4 text-3xl font-semibold tracking-tight text-gray-900" href="/en/">Booking for an appointment to the consul</a>
+                                <div id="flash-container">
+                    
+                    <div id="turbo-flash-container"></div>
+                </div>
+                <div class="flex gap-1">
+                    <a href="/et/"><img src="/assets/images/lipp_est-7902ff6e348b91574bf7d60a7e2d1ea2.gif" alt="Eesti" title="Eesti" /></a>
+                    <a href="/en/"><img src="/assets/images/lipp_eng-de03b58c9b6a9a2e55f46fb83b9b4afd.gif" alt="English" title="English" /></a>
+                    <a href="/ru/"><img src="/assets/images/lipp_rus-dab8bccea44097831b72355d0beef35d.gif" alt="Русский" title="Русский" /></a>
+                </div>
+                            <turbo-frame id="broneering" target="_top">
+            <div class="max-w-3xl">
+            
+            <form name="broneering" method="post">
+                <div class="form_container">
+                                            <div class="mb-3 flex flex-col gap-1"><label class="block text-sm font-medium text-gray-900 dark:text-white required" for="broneering_esindus">Choose the representation<span class="pl-1 text-red-500">*</span></label>    <select id="broneering_esindus" name="broneering[esindus]" required="required" data-controller="form--turbo" data-action="change-&gt;form--turbo#submit" class="text-gray-900 bg-gray-50 rounded-lg block w-full p-2.5 border border-gray-300 focus:z-10 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"><option value=""></option><option value="244">Embassy of the Republic of Estonia in Abu Dhabi</option><option value="7">Embassy of the Republic of Estonia in Ankara</option><option value="8">Embassy of the Republic of Estonia in Athens</option><option value="249">Embassy of the Republic of Estonia in Baku</option><option value="9">Embassy of the Republic of Estonia in Berlin</option><option value="10">Embassy of the Republic of Estonia in Brussels</option><option value="11">Embassy of the Republic of Estonia in Budapest</option><option value="243">Embassy of the Republic of Estonia in Bucharest</option><option value="239">Embassy of the Republic of Estonia in Canberra</option><option value="12">Embassy of the Republic of Estonia in Dublin</option><option value="13">Embassy of the Republic of Estonia in The Hague</option><option value="14">Embassy of the Republic of Estonia in Helsinki</option><option value="45">Embassy of the Republic of Estonia in Cairo</option><option value="15">Embassy of the Republic of Estonia in Kyiv</option><option value="16">Embassy of the Republic of Estonia in Copenhagen</option><option value="17">Embassy of the Republic of Estonia in Lisbon</option><option value="4">Embassy of the Republic of Estonia in London</option><option value="19">Embassy of the Republic of Estonia in Madrid</option><option value="21">Embassy of the Republic of Estonia in Moscow</option><option value="40" selected="selected">Embassy of the Republic of Estonia in New Delhi</option><option value="23">Embassy of the Republic of Estonia in Oslo</option><option value="24">Embassy of the Republic of Estonia in Ottawa</option><option value="25">Embassy of the Republic of Estonia in Paris</option><option value="26">Embassy of the Republic of Estonia in Beijing</option><option value="28">Embassy of the Republic of Estonia in Prague</option><option value="29">Embassy of the Republic of Estonia in Riga</option><option value="30">Embassy of the Republic of Estonia in Rome</option><option value="251">Embassy of the Republic of Estonia in Singapore</option><option value="250">Embassy of the Republic of Estonia in Seoul</option><option value="32">Embassy of the Republic of Estonia in Stockholm</option><option value="43">Embassy of the Republic of Estonia in Tbilisi</option><option value="44">Embassy of the Republic of Estonia in Tel Aviv</option><option value="33">Embassy of the Republic of Estonia in Tokyo</option><option value="34">Embassy of the Republic of Estonia in Warsaw</option><option value="35">Embassy of the Republic of Estonia in Vienna</option><option value="36">Embassy of the Republic of Estonia in Vilnius</option><option value="37">Embassy of the Republic of Estonia in Washington</option><option value="259">Consular Mission to Dubai</option><option value="256">Consular mission to Edinburgh</option><option value="260">Consular Mission to Frankfurt</option></select></div>
+    <div class="mb-3 flex flex-col gap-1"><label class="block text-sm font-medium text-red-600 dark:text-red-500 required" for="broneering_toiming">Choose the required service<span class="pl-1 text-red-500">*</span></label><p id="broneering_toiming_error_0" class="text-sm text-red-600 dark:text-red-500">Toimingu valimine on kohustuslik.</p>    <select id="broneering_toiming" name="broneering[toiming]" required="required" data-controller="form--turbo" data-action="change-&gt;form--turbo#submit" class="rounded-lg block w-full p-2.5 border bg-red-50 border-red-500 text-red-900 placeholder-red-700 dark:bg-red-100 dark:border-red-500 dark:text-red-500 dark:placeholder-red-500 focus:z-10 focus:ring-red-500 focus:border-red-500 dark:focus:ring-red-500 dark:focus:border-red-500"><option value="" selected="selected"></option><option value="501">Long-stay visa (D-visa) application</option><option value="502">Short-stay visa (C-visa) application</option><option value="503">  Residence permit application </option></select></div>
+
+    <div class="row">
+    <div class="label"></div>
+    <div class="contents">
+        <script src="https://www.google.com/recaptcha/api.js?hl=en" nonce="TESTNONCE" async defer></script>
+        <div id="recaptcha" class="g-recaptcha" data-sitekey="6Ld04R4nAAAAADJhUQpKyGxGh4zlfOsyk5VkVkzR"></div>
+    </div>
+</div>
+
+
+                                                                                                </div>
+
+                <ul class="flex gap-2.5 mt-3">
+                                            <button data-turbo-frame="broneering" type="submit" name="turbo" class="hidden"></button>
+                                                                                                        <li>
+                            
+
+
+    
+    
+    
+                    
+
+        
+
+
+<button  type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 inline-flex flex-nowrap items-center flex-shrink-0 justify-center font-medium rounded-lg text-sm focus:outline-none focus:ring-4 px-5 py-2" name="edasi">
+                    To the next page
+    
+</button>
+
+                        </li>
+                                                                            </ul>
+            <input type="hidden" id="broneering___dynamic_error" name="broneering[__dynamic_error]" class="" /><input type="hidden" id="broneering__token" name="broneering[_token]" class="" value="TESTTOKEN" /></form>
+        </div>
+            </turbo-frame>
+                </div>
+        </div>
+    </div>
+    </body>
+</html>

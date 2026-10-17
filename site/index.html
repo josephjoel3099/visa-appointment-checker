@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Estonia Visa Appointments</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="page">
+    <h1>Estonia visa appointments</h1>
+    <p id="last-checked" class="muted">Last checked: loading…</p>
+    <div id="banner" class="banner" role="status" hidden></div>
+    <p class="actions"><button type="button" id="notify-btn" hidden>Enable browser notifications</button></p>
+  </header>
+
+  <main>
+    <section aria-labelledby="results-h">
+      <h2 id="results-h">Availability</h2>
+      <div id="results" aria-live="polite"><p class="muted">Loading…</p></div>
+    </section>
+
+    <section aria-labelledby="pick-h">
+      <h2 id="pick-h">What to watch</h2>
+      <fieldset id="embassy-set">
+        <legend>Embassies</legend>
+        <p class="bulk">
+          <button type="button" class="link" data-bulk="embassies" data-mode="all">Select all</button>
+          <button type="button" class="link" data-bulk="embassies" data-mode="none">Select none</button>
+        </p>
+        <div id="embassy-list" class="checklist" tabindex="0" role="group" aria-label="Embassy list"></div>
+      </fieldset>
+      <fieldset id="service-set">
+        <legend>Appointment types</legend>
+        <p class="bulk">
+          <button type="button" class="link" data-bulk="services" data-mode="all">Select all</button>
+          <button type="button" class="link" data-bulk="services" data-mode="none">Select none</button>
+        </p>
+        <div id="service-list" class="checklist" role="group" aria-label="Appointment type list"></div>
+      </fieldset>
+    </section>
+  </main>
+
+  <footer class="page muted">
+    <p>Unofficial. Data is read from the
+      <a href="https://broneering.mfa.ee/en/" target="_blank" rel="noopener noreferrer">Estonian MFA booking portal</a>
+      every few minutes. Always confirm on the portal.</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

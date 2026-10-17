@@ -1,0 +1,131 @@
+name: Check availability
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+
+concurrency:
+  group: check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Ensure data branch exists
+        run: |
+          if git ls-remote --exit-code --heads origin data >/dev/null 2>&1; then
+            echo "data branch already exists"
+          else
+            echo "Creating orphan data branch"
+            # Build the root commit directly from the empty tree so the
+            # working tree and HEAD of the main checkout stay untouched.
+            empty_tree="$(git hash-object -t tree /dev/null)"
+            commit="$(git -c user.name='github-actions[bot]' \
+                          -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+                          commit-tree "$empty_tree" -m 'Initialize data branch')"
+            git push origin "$commit:refs/heads/data"
+          fi
+
+      - name: Checkout data branch
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run checker
+        id: check
+        continue-on-error: true
+        run: python -m checker --data-dir data --out public/status.json
+
+      - name: Assemble site
+        id: assemble
+        run: |
+          mkdir -p public
+          cp site/index.html site/app.js site/logic.js site/style.css public/
+          # If the checker crashed before writing, fall back to the last
+          # known data so the deployed site is never left without status.json.
+          if [ ! -f public/status.json ] && [ -f data/status.json ]; then
+            cp data/status.json public/status.json
+          fi
+          if [ -f public/status.json ]; then
+            echo "has_data=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_data=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit data to data branch
+        working-directory: data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update status'
+            git push origin data
+          else
+            echo "No changes to commit"
+          fi
+
+      - name: Upload Pages artifact
+        if: steps.assemble.outputs.has_data == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        if: steps.assemble.outputs.has_data == 'true'
+        uses: actions/deploy-pages@v4
+
+      - name: Fail only on a sustained outage
+        if: steps.check.outcome == 'failure'
+        run: |
+          echo "::warning::checker run failed (more than half of embassies unreachable)"
+          python3 - <<'PY'
+          import json
+          import sys
+          from datetime import datetime, timezone
+
+          try:
+              with open("public/status.json") as f:
+                  last_success = json.load(f).get("last_success")
+          except (OSError, ValueError):
+              print("public/status.json missing or unreadable: treating as sustained outage")
+              sys.exit(1)
+
+          if not last_success:
+              print("no successful run recorded: sustained outage")
+              sys.exit(1)
+          then = datetime.strptime(last_success, "%Y-%m-%dT%H:%M:%SZ").replace(
+              tzinfo=timezone.utc
+          )
+          age = (datetime.now(timezone.utc) - then).total_seconds() / 60
+          if age > 60:
+              print(f"last success {age:.0f} min ago (> 60): sustained outage")
+              sys.exit(1)
+          print(f"last success {age:.0f} min ago (<= 60): transient, keeping the run green")
+          PY
