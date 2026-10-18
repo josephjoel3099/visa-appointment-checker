@@ -129,3 +129,73 @@ jobs:
               sys.exit(1)
           print(f"last success {age:.0f} min ago (<= 60): transient, keeping the run green")
           PY
+
+      # GitHub Pages can get stuck on one build version (the commit SHA): the
+      # deploy reports success but the live site keeps serving old content.
+      # A new commit on main gives Pages a fresh build version, so when the
+      # live copy is badly behind this run, push an empty commit to main.
+      - name: Verify live site and self-heal
+        if: always() && steps.deployment.outcome == 'success'
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          set +e
+          python3 - <<'PY'
+          import json
+          import os
+          import sys
+          import time
+          import urllib.request
+          from datetime import datetime, timezone
+
+          MAX_LAG_MIN = 10
+          url = os.environ["PAGE_URL"].rstrip("/") + "/status.json"
+
+          def parse(ts):
+              return datetime.strptime(ts, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+
+          with open("public/status.json") as f:
+              expected = json.load(f)["last_checked"]
+
+          live = None
+          for attempt in range(7):  # Pages needs a moment to propagate
+              try:
+                  req = urllib.request.Request(
+                      f"{url}?cb={int(time.time())}", headers={"Cache-Control": "no-cache"}
+                  )
+                  with urllib.request.urlopen(req, timeout=20) as resp:
+                      live = json.load(resp).get("last_checked")
+              except Exception as exc:
+                  print(f"fetch failed: {type(exc).__name__}: {exc}")
+              if live == expected:
+                  print(f"live site is current ({live})")
+                  sys.exit(0)
+              time.sleep(10)
+
+          lag = (parse(expected) - parse(live)).total_seconds() / 60 if live else None
+          if lag is not None and lag <= MAX_LAG_MIN:
+              print(f"::warning::live site is {lag:.1f} min behind (<= {MAX_LAG_MIN}): propagation delay")
+              sys.exit(0)
+          print(f"live last_checked={live}, expected={expected}: Pages looks stuck")
+          sys.exit(2)
+          PY
+          rc=$?
+          [ "$rc" -eq 0 ] && exit 0
+          [ "$rc" -ne 2 ] && exit "$rc"
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch --quiet origin main
+          # Loop guard: if a refresh commit was pushed recently and the site is
+          # still stuck, another one will not help, so fail the run instead.
+          last_subject="$(git log -1 --format=%s origin/main)"
+          last_epoch="$(git log -1 --format=%ct origin/main)"
+          age_min=$(( ($(date +%s) - last_epoch) / 60 ))
+          if [ "$last_subject" = "chore: refresh Pages build version" ] && [ "$age_min" -lt 30 ]; then
+            echo "::error::Pages still stale ${age_min} min after a refresh commit; not pushing another"
+            exit 1
+          fi
+          echo "::warning::Pages stuck: pushing an empty commit to main for a new build version"
+          git checkout -q -B main origin/main
+          git commit -q --allow-empty -m 'chore: refresh Pages build version'
+          git push origin main
