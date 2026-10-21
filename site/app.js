@@ -221,7 +221,9 @@ function renderHeader() {
         dateStyle: "medium",
         timeStyle: "short",
       });
-      message = `The portal is down for maintenance until ${until} — showing last known data.`;
+      message = s.overrun
+        ? `The portal's maintenance is running past its announced end (${until}) — showing last known data.`
+        : `The portal is down for maintenance until ${until} — showing last known data.`;
     } else if (s.stale && s.reason === "failing") {
       message =
         "The checker is currently failing — showing last known data, which may be out of date.";

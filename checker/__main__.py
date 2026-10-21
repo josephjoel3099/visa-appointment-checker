@@ -121,12 +121,14 @@ def run(
     previous = _load_previous(status_file)
     scrape, samples = scrape_all(portal, with_dates)
     # An announced maintenance window is a planned outage, not a failed run.
-    # Once its end has passed a 503 is an ordinary failure again.
+    # Once its end has passed the run counts as failed again, but the window
+    # stays recorded so the dashboard can say the maintenance is overrunning.
     maintenance_until = scrape.get("maintenance_until")
     if maintenance_until and maintenance_until <= now:
         log.warning("maintenance ended at %s but the portal still answers 503", maintenance_until)
-        del scrape["maintenance_until"]
-        maintenance_until = None
+        planned = False
+    else:
+        planned = bool(maintenance_until)
     merged = merge(previous, scrape, now)
 
     _write_json(out_path, merged)
@@ -135,7 +137,7 @@ def run(
     if run_ok and not materially_equal(previous, merged):
         _write_json(status_file, merged)
     _save_samples(data_dir, samples)
-    return 0 if run_ok or maintenance_until else 1
+    return 0 if run_ok or planned else 1
 
 
 def main(argv: list[str] | None = None) -> int:

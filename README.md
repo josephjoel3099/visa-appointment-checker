@@ -43,8 +43,10 @@ closed before this was added have no duration.
 6. When the portal answers 503 with an `X-Maintenance-End` header, the checker
    treats it as planned maintenance: it does not retry, keeps the run green,
    records `maintenance_until` in `status.json` and the dashboard shows a
-   "down for maintenance until ..." banner. Once that time has passed, a 503
-   counts as an ordinary failure again.
+   "down for maintenance until ..." banner. Once that time has passed, the run
+   counts as failed again (so a stuck 503 still surfaces), but
+   `maintenance_until` stays recorded and the banner says the maintenance is
+   running past its announced end.
 
 All data comes from the portal's public pages; no account or credentials are
 involved.

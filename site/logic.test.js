@@ -119,15 +119,42 @@ test("staleness: announced maintenance in the future is maintenance", () => {
   assert.equal(r.until, "2026-10-17T20:00:00Z");
 });
 
-test("staleness: maintenance end already passed is failing", () => {
+test("staleness: maintenance past its announced end but freshly seen is overrunning", () => {
   const r = staleness(
     makeStatus({
+      last_checked: NOW.toISOString(),
       last_success: "2026-10-17T15:00:00Z",
       maintenance_until: "2026-10-17T16:00:00Z",
     }),
     NOW,
   );
-  assert.equal(r.reason, "failing");
+  assert.equal(r.stale, true);
+  assert.equal(r.reason, "maintenance");
+  assert.equal(r.overrun, true);
+  assert.equal(r.until, "2026-10-17T16:00:00Z");
+});
+
+test("staleness: announced maintenance in the future is not an overrun", () => {
+  const r = staleness(
+    makeStatus({
+      last_success: "2026-10-17T15:00:00Z",
+      maintenance_until: "2026-10-17T20:00:00Z",
+    }),
+    NOW,
+  );
+  assert.equal(r.overrun, false);
+});
+
+test("staleness: maintenance recorded by an old check is just old data", () => {
+  const r = staleness(
+    makeStatus({
+      last_checked: "2026-10-17T10:00:00Z",
+      last_success: "2026-10-17T10:00:00Z",
+      maintenance_until: "2026-10-17T11:00:00Z",
+    }),
+    NOW,
+  );
+  assert.notEqual(r.reason, "maintenance");
 });
 
 test("staleness: unparseable maintenance_until is failing", () => {

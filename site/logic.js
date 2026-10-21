@@ -33,11 +33,16 @@ function windowMinutes(entry) {
 
 export function staleness(status, now) {
   const minutes = ageMinutes(status?.last_checked ?? null, now);
-  // The checker records an announced portal maintenance window; it only counts
-  // while its end is still in the future.
+  // The checker records an announced portal maintenance window.
+  // Past its end it is shown as overrunning, but only while the checker itself
+  // is fresh: the field is written only by a run that just saw the 503.
   const until = status?.maintenance_until;
-  if (ageMinutes(until, now) < 0) {
-    return { stale: true, reason: "maintenance", minutes, until };
+  const untilAge = ageMinutes(until, now);
+  if (untilAge < 0) {
+    return { stale: true, reason: "maintenance", minutes, until, overrun: false };
+  }
+  if (untilAge !== Infinity && minutes <= STALE_MINUTES) {
+    return { stale: true, reason: "maintenance", minutes, until, overrun: true };
   }
   if (!status || status.last_success !== status.last_checked) {
     return { stale: true, reason: "failing", minutes };

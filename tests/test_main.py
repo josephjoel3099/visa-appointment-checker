@@ -213,11 +213,11 @@ def test_planned_maintenance_is_not_a_failed_run(tmp_path):
     assert status["embassies"]["40"]["services"][SERVICE]["available"] is True
 
 
-def test_expired_maintenance_is_a_failed_run(tmp_path, caplog):
+def test_overrunning_maintenance_is_still_recorded_but_stays_a_failed_run(tmp_path, caplog):
     data_dir, out = paths(tmp_path)
     down = FakePortal(MaintenanceError("2026-10-17T10:30:00Z"), {})
     assert run(down, data_dir, out, T2) == 1
-    assert "maintenance_until" not in load(out)
+    assert load(out)["maintenance_until"] == "2026-10-17T10:30:00Z"
     assert "ended" in caplog.text
 
 
