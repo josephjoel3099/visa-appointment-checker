@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 import requests
 
-from checker.portal import USER_AGENT, Portal, PortalError, Service
+from checker.portal import USER_AGENT, MaintenanceError, Portal, PortalError, Service
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -13,9 +13,10 @@ def load(name: str) -> str:
 
 
 class FakeResponse:
-    def __init__(self, status_code, text=""):
+    def __init__(self, status_code, text="", headers=None):
         self.status_code = status_code
         self.text = text
+        self.headers = headers or {}
 
 
 class FakeSession:
@@ -114,6 +115,30 @@ def test_gives_up_after_three_attempts():
     )
     with pytest.raises(PortalError):
         portal.list_embassies()
+    assert sleeps == [1.0, 2.0]
+
+
+def test_maintenance_503_fails_fast_with_end_time():
+    portal, sessions, sleeps = make_portal(
+        FakeResponse(503, headers={"X-Maintenance-End": "2026-10-21 15:00 UTC"})
+    )
+    with pytest.raises(MaintenanceError) as excinfo:
+        portal.list_embassies()
+    assert excinfo.value.until == "2026-10-21T15:00:00Z"
+    assert sleeps == []
+    assert len(sessions[0].calls) == 1
+
+
+def test_503_with_unparseable_maintenance_header_is_retried():
+    bad = {"X-Maintenance-End": "soon"}
+    portal, _, sleeps = make_portal(
+        FakeResponse(503, headers=bad),
+        FakeResponse(503, headers=bad),
+        FakeResponse(503, headers=bad),
+    )
+    with pytest.raises(PortalError) as excinfo:
+        portal.list_embassies()
+    assert not isinstance(excinfo.value, MaintenanceError)
     assert sleeps == [1.0, 2.0]
 
 

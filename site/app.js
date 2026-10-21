@@ -1,4 +1,6 @@
 import {
+  ageMinutes,
+  formatDuration,
   newlyAvailable,
   normalizeSelection,
   selectRows,
@@ -117,9 +119,21 @@ function renderRow(row) {
         ? `Dates: ${formatDates(row.dates)}`
         : "Available — open the portal to see dates";
     card.appendChild(el("p", "detail", text));
+    if (row.availableSince) {
+      const since = el("p", "detail small");
+      since.dataset.since = row.availableSince;
+      setAvailableFor(since, new Date());
+      card.appendChild(since);
+    }
   } else if (row.state === "error") {
     card.appendChild(
       el("p", "detail", "Check failing — showing last known data"),
+    );
+  }
+
+  if (row.wasAvailableMinutes !== null && row.state !== "available") {
+    card.appendChild(
+      el("p", "detail small", `Was available for ${formatDuration(row.wasAvailableMinutes)}`),
     );
   }
 
@@ -138,6 +152,18 @@ function renderRow(row) {
 
 function setText(node, text) {
   if (node.textContent !== text) node.textContent = text;
+}
+
+// "Available for X" changes with the clock, so it is refreshed in place on the
+// tick instead of going through the results key (which would rebuild the cards).
+function setAvailableFor(node, now) {
+  const minutes = ageMinutes(node.dataset.since, now);
+  setText(
+    node,
+    Number.isFinite(minutes) && minutes >= 0
+      ? `Available for ${formatDuration(minutes)}`
+      : "",
+  );
 }
 
 function renderResults() {
@@ -172,6 +198,9 @@ function renderResults() {
 
 function renderHeader() {
   const now = new Date();
+  for (const node of document.querySelectorAll("[data-since]")) {
+    setAvailableFor(node, now);
+  }
   const banner = $("banner");
   let message = null;
   let lastText;
@@ -187,6 +216,12 @@ function renderHeader() {
     if (fetchFailed) {
       message =
         "Could not refresh data — showing last known data. Retrying every minute.";
+    } else if (s.reason === "maintenance") {
+      const until = new Date(s.until).toLocaleString([], {
+        dateStyle: "medium",
+        timeStyle: "short",
+      });
+      message = `The portal is down for maintenance until ${until} — showing last known data.`;
     } else if (s.stale && s.reason === "failing") {
       message =
         "The checker is currently failing — showing last known data, which may be out of date.";

@@ -12,6 +12,11 @@ embassy. Appointment **dates are not shown**: the portal's calendar page sits
 behind a reCAPTCHA, and this project does not try to bypass it. Open the portal
 yourself to pick a date once a service shows up.
 
+The dashboard also shows how long a service has been available ("Available
+for ...") and, once it is gone, how long its last window lasted ("Was available
+for ..."). Durations are only as precise as the check interval, and windows that
+closed before this was added have no duration.
+
 ## How it works
 
 1. A GitHub Actions workflow (`check.yml`) runs every ~10 minutes. It is
@@ -35,6 +40,11 @@ yourself to pick a date once a service shows up.
    outage, meaning the last successful check (`last_success` in
    `status.json`) is more than 60 minutes old, or there is none at all. The
    dashboard itself also shows a stale/failing banner whenever data is old.
+6. When the portal answers 503 with an `X-Maintenance-End` header, the checker
+   treats it as planned maintenance: it does not retry, keeps the run green,
+   records `maintenance_until` in `status.json` and the dashboard shows a
+   "down for maintenance until ..." banner. Once that time has passed, a 503
+   counts as an ordinary failure again.
 
 All data comes from the portal's public pages; no account or credentials are
 involved.

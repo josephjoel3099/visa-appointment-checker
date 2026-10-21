@@ -4,7 +4,7 @@ from __future__ import annotations
 import re
 import time
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, datetime, timezone
 
 import requests
 from bs4 import BeautifulSoup
@@ -20,6 +20,25 @@ _DATE_RE = re.compile(r"\b(\d{4})-(\d{2})-(\d{2})\b|\b(\d{2})\.(\d{2})\.(\d{4})\
 
 class PortalError(Exception):
     """Raised when the portal's HTML does not look as expected."""
+
+
+class MaintenanceError(PortalError):
+    """The portal answered 503 and announced when its maintenance ends."""
+
+    def __init__(self, until: str):
+        super().__init__(f"portal in maintenance until {until}")
+        self.until = until
+
+
+def _maintenance_end(value: str | None) -> str | None:
+    """Parse the X-Maintenance-End header ("2026-10-21 15:00 UTC") to ISO UTC."""
+    if not value:
+        return None
+    try:
+        parsed = datetime.strptime(value.strip(), "%Y-%m-%d %H:%M UTC")
+    except ValueError:
+        return None
+    return parsed.replace(tzinfo=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 @dataclass(frozen=True)
@@ -133,6 +152,10 @@ class Portal:
             status = resp.status_code
             if status in accepted:
                 return resp.text
+            if status == 503:
+                until = _maintenance_end(resp.headers.get("X-Maintenance-End"))
+                if until:
+                    raise MaintenanceError(until)
             if status == 429 or status >= 500:
                 last_error = f"HTTP {status}"
                 continue

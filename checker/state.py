@@ -35,11 +35,17 @@ def _merge_ok_embassy(prev_emb: dict | None, scraped: dict, now: str) -> dict:
         # available, so the stored value lags. On the available -> unavailable
         # flip (which is committed) stamp "now", accurate to one check
         # interval. Already-unavailable services keep their frozen value.
-        last_seen = now if prev.get("available") else prev.get("last_seen_available")
+        was_available = bool(prev.get("available"))
+        last_seen = now if was_available else prev.get("last_seen_available")
+        # The finished window runs from last_available_from to last_seen_available.
+        window_start = (
+            prev.get("available_since") if was_available else prev.get("last_available_from")
+        )
         services[name] = {
             "available": False,
             "available_since": None,
             "last_seen_available": last_seen,
+            "last_available_from": window_start,
             "dates": None,
         }
     return {
@@ -57,12 +63,15 @@ def merge(previous: dict | None, scrape: dict, now: str) -> dict:
     run_ok = is_run_ok(scrape)
 
     if not run_ok:
-        return {
+        failed = {
             "last_checked": now,
             "last_success": prev.get("last_success"),
             "embassies": prev_embassies,
             "service_catalog": sorted(catalog),
         }
+        if scrape.get("maintenance_until"):
+            failed["maintenance_until"] = scrape["maintenance_until"]
+        return failed
 
     embassies = prev_embassies  # absent embassies stay untouched
     for eid, scraped in scrape["embassies"].items():

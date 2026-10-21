@@ -4,6 +4,7 @@ import {
   DEFAULT_SELECTION,
   STALE_MINUTES,
   ageMinutes,
+  formatDuration,
   staleness,
   selectRows,
   newlyAvailable,
@@ -102,6 +103,38 @@ test("staleness: last_success earlier than last_checked is failing", () => {
 test("staleness: null last_success is failing", () => {
   const r = staleness(makeStatus({ last_success: null }), NOW);
   assert.equal(r.stale, true);
+  assert.equal(r.reason, "failing");
+});
+
+test("staleness: announced maintenance in the future is maintenance", () => {
+  const r = staleness(
+    makeStatus({
+      last_success: "2026-10-17T15:00:00Z",
+      maintenance_until: "2026-10-17T20:00:00Z",
+    }),
+    NOW,
+  );
+  assert.equal(r.stale, true);
+  assert.equal(r.reason, "maintenance");
+  assert.equal(r.until, "2026-10-17T20:00:00Z");
+});
+
+test("staleness: maintenance end already passed is failing", () => {
+  const r = staleness(
+    makeStatus({
+      last_success: "2026-10-17T15:00:00Z",
+      maintenance_until: "2026-10-17T16:00:00Z",
+    }),
+    NOW,
+  );
+  assert.equal(r.reason, "failing");
+});
+
+test("staleness: unparseable maintenance_until is failing", () => {
+  const r = staleness(
+    makeStatus({ last_success: null, maintenance_until: "soon" }),
+    NOW,
+  );
   assert.equal(r.reason, "failing");
 });
 
@@ -262,4 +295,33 @@ test("normalizeSelection: keeps explicit empty arrays", () => {
 test("normalizeSelection: keeps valid selection", () => {
   const sel = { embassies: ["10", "40"], services: ["A"] };
   assert.deepEqual(normalizeSelection(sel), sel);
+});
+
+test("formatDuration", () => {
+  assert.equal(formatDuration(0.4), "less than a minute");
+  assert.equal(formatDuration(1), "1 min");
+  assert.equal(formatDuration(59.9), "59 min");
+  assert.equal(formatDuration(60), "1 h");
+  assert.equal(formatDuration(47 * 60 + 59), "47 h");
+  assert.equal(formatDuration(48 * 60), "2 days");
+});
+
+test("selectRows: unavailable service reports how long it was available", () => {
+  const s = makeStatus();
+  s.embassies["40"].services[D_VISA] = svc(false, {
+    last_available_from: "2026-10-17T14:00:00Z",
+    last_seen_available: "2026-10-17T15:30:00Z",
+  });
+  const [row] = selectRows(s, { embassies: ["40"], services: [D_VISA] });
+  assert.equal(row.state, "full");
+  assert.equal(row.wasAvailableMinutes, 90);
+});
+
+test("selectRows: no window without a recorded start, or while available", () => {
+  const none = selectRows(makeStatus(), {
+    embassies: ["10", "40"],
+    services: [D_VISA],
+  });
+  assert.equal(none.find((r) => r.embassyId === "10").wasAvailableMinutes, null);
+  assert.equal(none.find((r) => r.embassyId === "40").wasAvailableMinutes, null);
 });

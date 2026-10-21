@@ -11,7 +11,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
-from checker.portal import Portal
+from checker.portal import MaintenanceError, Portal
 from checker.state import is_run_ok, materially_equal, merge
 
 MAX_WORKERS = 4
@@ -58,6 +58,9 @@ def _scrape_embassy(
 def scrape_all(portal, with_dates: bool = False) -> tuple[dict, dict]:
     try:
         embassies = portal.list_embassies()
+    except MaintenanceError as exc:
+        log.warning("list_embassies: %s", exc)
+        return {"embassies": {}, "maintenance_until": exc.until}, {}
     except Exception as exc:
         log.warning("list_embassies: %s: %s", type(exc).__name__, exc)
         return {"embassies": {}}, {}
@@ -117,6 +120,13 @@ def run(
 
     previous = _load_previous(status_file)
     scrape, samples = scrape_all(portal, with_dates)
+    # An announced maintenance window is a planned outage, not a failed run.
+    # Once its end has passed a 503 is an ordinary failure again.
+    maintenance_until = scrape.get("maintenance_until")
+    if maintenance_until and maintenance_until <= now:
+        log.warning("maintenance ended at %s but the portal still answers 503", maintenance_until)
+        del scrape["maintenance_until"]
+        maintenance_until = None
     merged = merge(previous, scrape, now)
 
     _write_json(out_path, merged)
@@ -125,7 +135,7 @@ def run(
     if run_ok and not materially_equal(previous, merged):
         _write_json(status_file, merged)
     _save_samples(data_dir, samples)
-    return 0 if run_ok else 1
+    return 0 if run_ok or maintenance_until else 1
 
 
 def main(argv: list[str] | None = None) -> int:

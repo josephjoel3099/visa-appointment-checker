@@ -63,6 +63,56 @@ def test_disappears():
     assert svc["dates"] is None
 
 
+def test_disappearing_records_where_the_window_started():
+    first = merge(None, scrape(a=(True, {SVC: None})), NOW1)
+    gone = merge(first, scrape(a=(True, {})), NOW2)
+    svc = gone["embassies"]["a"]["services"][SVC]
+    assert svc["last_available_from"] == NOW1
+    assert svc["last_seen_available"] == NOW2
+
+
+def test_window_start_survives_unwritten_runs():
+    # available_since is committed when the window opens, so a flip long after
+    # still records it even though the stored last_seen_available lags.
+    stored = merge(None, scrape(a=(True, {SVC: None})), NOW1)
+    out = merge(stored, scrape(a=(True, {})), "2026-10-17T14:00:00Z")
+    assert out["embassies"]["a"]["services"][SVC]["last_available_from"] == NOW1
+
+
+def test_already_unavailable_keeps_window_start():
+    first = merge(None, scrape(a=(True, {SVC: None})), NOW1)
+    gone = merge(first, scrape(a=(True, {})), NOW2)
+    later = merge(gone, scrape(a=(True, {})), "2026-10-17T10:20:00Z")
+    assert later["embassies"]["a"]["services"][SVC]["last_available_from"] == NOW1
+
+
+def test_unavailable_from_before_the_field_has_no_window_start():
+    old = {
+        "embassies": {
+            "a": {
+                "name": "Embassy a",
+                "ok": True,
+                "checked_at": NOW1,
+                "services": {
+                    SVC: {
+                        "available": False,
+                        "available_since": None,
+                        "last_seen_available": NOW1,
+                        "dates": None,
+                    }
+                },
+            }
+        }
+    }
+    out = merge(old, scrape(a=(True, {})), NOW2)
+    assert out["embassies"]["a"]["services"][SVC]["last_available_from"] is None
+
+
+def test_available_service_has_no_window_start():
+    first = merge(None, scrape(a=(True, {SVC: None})), NOW1)
+    assert "last_available_from" not in first["embassies"]["a"]["services"][SVC]
+
+
 def test_reappears_gets_new_since():
     first = merge(None, scrape(a=(True, {SVC: None})), NOW1)
     gone = merge(first, scrape(a=(True, {})), NOW2)
@@ -119,6 +169,20 @@ def test_majority_failure_first_run():
     assert out["service_catalog"] == SEED_CATALOG
     assert out["last_success"] is None
     assert out["last_checked"] == NOW1
+
+
+def test_maintenance_until_is_carried_on_a_failed_run():
+    first = merge(None, scrape(a=(True, {SVC: None})), NOW1)
+    down = {"embassies": {}, "maintenance_until": "2026-10-17T15:00:00Z"}
+    out = merge(first, down, NOW2)
+    assert out["maintenance_until"] == "2026-10-17T15:00:00Z"
+    assert out["last_success"] == NOW1
+    assert out["embassies"] == first["embassies"]
+
+
+def test_successful_run_has_no_maintenance_until():
+    out = merge(None, scrape(a=(True, {SVC: None})), NOW1)
+    assert "maintenance_until" not in out
 
 
 def test_exactly_half_failing_is_ok():

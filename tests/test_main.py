@@ -4,7 +4,7 @@ import logging
 import pytest
 
 from checker.__main__ import MAX_WORKERS, main, run, scrape_all
-from checker.portal import DatesResult, PortalError, Service
+from checker.portal import DatesResult, MaintenanceError, PortalError, Service
 
 SERVICE = "Long-stay visa (D-visa) application"
 T1 = "2026-10-17T10:00:00Z"
@@ -198,6 +198,37 @@ def test_list_embassies_failure_with_previous(tmp_path):
     assert status["embassies"]["40"]["services"][SERVICE]["available"] is True
 
 
+def test_planned_maintenance_is_not_a_failed_run(tmp_path):
+    data_dir, out = paths(tmp_path)
+    assert run(two_embassy_portal(), data_dir, out, T1) == 0
+    data_file = data_dir / "status.json"
+    before = data_file.read_bytes()
+    down = FakePortal(MaintenanceError("2026-10-17T15:00:00Z"), {})
+    assert run(down, data_dir, out, T2) == 0
+    assert data_file.read_bytes() == before
+    status = load(out)
+    assert status["last_checked"] == T2
+    assert status["last_success"] == T1
+    assert status["maintenance_until"] == "2026-10-17T15:00:00Z"
+    assert status["embassies"]["40"]["services"][SERVICE]["available"] is True
+
+
+def test_expired_maintenance_is_a_failed_run(tmp_path, caplog):
+    data_dir, out = paths(tmp_path)
+    down = FakePortal(MaintenanceError("2026-10-17T10:30:00Z"), {})
+    assert run(down, data_dir, out, T2) == 1
+    assert "maintenance_until" not in load(out)
+    assert "ended" in caplog.text
+
+
+def test_recovery_clears_maintenance_until(tmp_path):
+    data_dir, out = paths(tmp_path)
+    down = FakePortal(MaintenanceError("2026-10-17T15:00:00Z"), {})
+    assert run(down, data_dir, out, T1) == 0
+    assert run(two_embassy_portal(), data_dir, out, T2) == 0
+    assert "maintenance_until" not in load(out)
+
+
 def test_majority_failure_no_previous_creates_no_data_file(tmp_path):
     data_dir, out = paths(tmp_path)
     ids = {"40": "A", "41": "B", "42": "C"}
@@ -268,6 +299,14 @@ def test_scrape_all_shape_and_samples():
 
 def test_scrape_all_list_embassies_failure():
     assert scrape_all(FakePortal(PortalError("x"), {})) == ({"embassies": {}}, {})
+
+
+def test_scrape_all_maintenance():
+    portal = FakePortal(MaintenanceError("2026-10-17T15:00:00Z"), {})
+    assert scrape_all(portal) == (
+        {"embassies": {}, "maintenance_until": "2026-10-17T15:00:00Z"},
+        {},
+    )
 
 
 def test_samples_saved_once(tmp_path):
