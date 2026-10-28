@@ -1,7 +1,7 @@
 {
   "embassies": {
     "10": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Brussels",
       "ok": true,
       "services": {
@@ -9,66 +9,66 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for new PIN codes": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Legalisation of a document": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Notarial acts (certification, notarial and official authentication)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Release from citizenship": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "11": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Budapest",
       "ok": true,
       "services": {
@@ -76,12 +76,12 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "12": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Dublin",
       "ok": true,
       "services": {
@@ -89,48 +89,48 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Schengen visa (C-visa) application": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "13": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in The Hague",
       "ok": true,
       "services": {
@@ -138,48 +138,48 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for new PIN codes": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "14": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Helsinki",
       "ok": true,
       "services": {
@@ -187,36 +187,36 @@
           "available": true,
           "available_since": "2026-10-20T07:31:12Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-28T10:33:05Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "15": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Kyiv",
       "ok": true,
       "services": {
@@ -224,30 +224,30 @@
           "available": true,
           "available_since": "2026-10-19T17:10:57Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-28T10:33:05Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Schengen visa (C-visa) application": {
           "available": true,
           "available_since": "2026-10-19T17:10:57Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "16": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Copenhagen",
       "ok": true,
       "services": {
@@ -255,54 +255,54 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for new PIN codes": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Release from citizenship": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "17": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Lisbon",
       "ok": true,
       "services": {
@@ -310,48 +310,48 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for new PIN codes": {
           "available": true,
           "available_since": "2026-10-28T10:33:05Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "19": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Madrid",
       "ok": true,
       "services": {
@@ -359,97 +359,97 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for new PIN codes": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "21": {
-      "checked_at": "2026-10-28T22:42:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Moscow",
-      "ok": false,
+      "ok": true,
       "services": {
         "Application for residence permit": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T22:42:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for Estonian citizen`s passport/ID-card for the first time": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T22:42:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for new PIN codes": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T22:42:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T22:42:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T22:42:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T22:42:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Release from citizenship": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T22:42:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T22:42:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "23": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Oslo",
       "ok": true,
       "services": {
@@ -457,24 +457,24 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "239": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Canberra",
       "ok": true,
       "services": {
@@ -482,30 +482,30 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "24": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Ottawa",
       "ok": true,
       "services": {
@@ -513,60 +513,60 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for Estonian citizen`s passport/ID-card for the first time": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for new PIN codes": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Notarial acts (certification, notarial and official authentication)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "243": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Bucharest",
       "ok": true,
       "services": {
@@ -574,31 +574,31 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for Estonian citizen`s passport/ID-card for the first time": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for new PIN codes": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Notarial acts (certification, notarial and official authentication)": {
           "available": false,
@@ -611,24 +611,24 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "244": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Abu Dhabi",
       "ok": true,
       "services": {
@@ -636,66 +636,66 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for new PIN codes": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Legalisation of a document": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Long-stay visa (D-visa) application": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Notarial acts (certification, notarial and official authentication)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "249": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Baku",
       "ok": true,
       "services": {
@@ -710,13 +710,13 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": false,
@@ -728,7 +728,7 @@
       }
     },
     "25": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Paris",
       "ok": true,
       "services": {
@@ -736,43 +736,43 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Notarial acts (certification, notarial and official authentication)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
@@ -790,7 +790,7 @@
       }
     },
     "251": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Singapore",
       "ok": true,
       "services": {
@@ -798,54 +798,54 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for Estonian citizen`s passport/ID-card for the first time": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Long-stay visa (D-visa) application": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "256": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Consular mission to Edinburgh",
       "ok": true,
       "services": {
@@ -853,7 +853,7 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": false,
@@ -878,7 +878,7 @@
       }
     },
     "26": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Beijing",
       "ok": true,
       "services": {
@@ -893,7 +893,7 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": false,
@@ -906,7 +906,7 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": false,
@@ -918,7 +918,7 @@
       }
     },
     "260": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Consular Mission to Frankfurt",
       "ok": true,
       "services": {
@@ -926,24 +926,24 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "28": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Prague",
       "ok": true,
       "services": {
@@ -951,42 +951,42 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "29": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Riga",
       "ok": true,
       "services": {
@@ -994,48 +994,48 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Notarial acts (certification, notarial and official authentication)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "30": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Rome",
       "ok": true,
       "services": {
@@ -1043,36 +1043,36 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "32": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Stockholm",
       "ok": true,
       "services": {
@@ -1080,48 +1080,48 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for new PIN codes": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "33": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Tokyo",
       "ok": true,
       "services": {
@@ -1129,42 +1129,42 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "34": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Warsaw",
       "ok": true,
       "services": {
@@ -1172,48 +1172,48 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for new PIN codes": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "35": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Vienna",
       "ok": true,
       "services": {
@@ -1221,36 +1221,36 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "36": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Vilnius",
       "ok": true,
       "services": {
@@ -1279,13 +1279,13 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": false,
@@ -1297,7 +1297,7 @@
       }
     },
     "37": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Washington",
       "ok": true,
       "services": {
@@ -1305,60 +1305,60 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for Estonian citizen`s passport/ID-card for the first time": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for new PIN codes": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Release from citizenship": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "4": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in London",
       "ok": true,
       "services": {
@@ -1366,30 +1366,30 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "40": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in New Delhi",
       "ok": true,
       "services": {
@@ -1410,7 +1410,7 @@
       }
     },
     "43": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Tbilisi",
       "ok": true,
       "services": {
@@ -1418,54 +1418,54 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for Estonian citizen`s passport/ID-card for the first time": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Long-stay visa (D-visa) application": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Schengen visa (C-visa) application": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "44": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Tel Aviv",
       "ok": true,
       "services": {
@@ -1473,48 +1473,48 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for Estonian citizen`s passport/ID-card for the first time": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Issuing a certificate": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "45": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Cairo",
       "ok": true,
       "services": {
@@ -1522,30 +1522,30 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Legalisation of a document": {
           "available": true,
           "available_since": "2026-10-28T10:33:05Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Long-stay visa (D-visa) application": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "7": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Ankara",
       "ok": true,
       "services": {
@@ -1553,18 +1553,18 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "8": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Athens",
       "ok": true,
       "services": {
@@ -1572,24 +1572,24 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     },
     "9": {
-      "checked_at": "2026-10-28T23:24:31Z",
+      "checked_at": "2026-10-28T23:26:29Z",
       "name": "Embassy of the Republic of Estonia in Berlin",
       "ok": true,
       "services": {
@@ -1597,43 +1597,43 @@
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Applying for new PIN codes": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Giving fingerprints for Estonian passport": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of a document (passport, ID card, certificate, etc)": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Pick-up of e-resident's digital ID": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         },
         "Renewal of Estonian citizen`s passport/ID-card": {
           "available": true,
           "available_since": "2026-10-17T16:38:27Z",
           "dates": null,
-          "last_seen_available": "2026-10-28T23:24:31Z"
+          "last_seen_available": "2026-10-28T23:26:29Z"
         }
       }
     }
   },
-  "last_checked": "2026-10-28T23:24:31Z",
-  "last_success": "2026-10-28T23:24:31Z",
+  "last_checked": "2026-10-28T23:26:29Z",
+  "last_success": "2026-10-28T23:26:29Z",
   "service_catalog": [
     "Application for residence permit",
     "Applying for Estonian citizen`s passport/ID-card for the first time",
