@@ -155,9 +155,8 @@ fieldset {
 legend { font-weight: 700; padding: 0 0.25rem; }
 .bulk { margin: 0 0 0.25rem; }
 
-.checklist { max-height: 16rem; overflow-y: auto; }
-#service-list { max-height: none; }
-
+/* No inner scroll box: it cut off the 40 embassies mid-row, clipped the
+   checkbox focus ring, and trapped touch scrolling on phones. The page scrolls. */
 .checklist label {
   display: flex;
   align-items: flex-start;
