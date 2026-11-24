@@ -18,7 +18,7 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy_result.outputs.page_url }}
 
     steps:
       - name: Checkout main
@@ -96,10 +96,68 @@ jobs:
         with:
           path: public
 
+      # actions/deploy-pages looks the artifact up through GitHub's artifact
+      # listing right after upload-pages-artifact finalizes it. That listing
+      # is sometimes not up to date yet and the lookup fails with "Found 0
+      # artifact(s)" even though the upload succeeded, and deploy-pages does
+      # not retry. So: try up to three times, waiting between attempts.
       - name: Deploy to GitHub Pages
         id: deployment
         if: steps.assemble.outputs.has_data == 'true'
+        continue-on-error: true
         uses: actions/deploy-pages@v4
+
+      - name: Wait before deploy retry 1
+        if: steps.deployment.outcome == 'failure'
+        run: |
+          echo "::warning::deploy attempt 1 failed; retrying in 15s"
+          sleep 15
+
+      - name: Deploy to GitHub Pages (retry 1)
+        id: deployment_retry1
+        if: steps.deployment.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+
+      - name: Wait before deploy retry 2
+        if: steps.deployment.outcome == 'failure' && steps.deployment_retry1.outcome == 'failure'
+        run: |
+          echo "::warning::deploy attempt 2 failed; retrying in 30s"
+          sleep 30
+
+      - name: Deploy to GitHub Pages (retry 2)
+        id: deployment_retry2
+        if: steps.deployment.outcome == 'failure' && steps.deployment_retry1.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+
+      - name: Resolve deploy result
+        id: deploy_result
+        if: steps.assemble.outputs.has_data == 'true'
+        env:
+          URL_1: ${{ steps.deployment.outputs.page_url }}
+          URL_2: ${{ steps.deployment_retry1.outputs.page_url }}
+          URL_3: ${{ steps.deployment_retry2.outputs.page_url }}
+          OUTCOME_1: ${{ steps.deployment.outcome }}
+          OUTCOME_2: ${{ steps.deployment_retry1.outcome }}
+          OUTCOME_3: ${{ steps.deployment_retry2.outcome }}
+        run: |
+          if [ "$OUTCOME_1" = success ]; then
+            echo "success=true" >> "$GITHUB_OUTPUT"
+            echo "page_url=$URL_1" >> "$GITHUB_OUTPUT"
+          elif [ "$OUTCOME_2" = success ]; then
+            echo "success=true" >> "$GITHUB_OUTPUT"
+            echo "page_url=$URL_2" >> "$GITHUB_OUTPUT"
+            echo "::warning::deployed on retry 1 (attempt 1 failed)"
+          elif [ "$OUTCOME_3" = success ]; then
+            echo "success=true" >> "$GITHUB_OUTPUT"
+            echo "page_url=$URL_3" >> "$GITHUB_OUTPUT"
+            echo "::warning::deployed on retry 2 (attempts 1 and 2 failed)"
+          else
+            echo "success=false" >> "$GITHUB_OUTPUT"
+            echo "::error::Pages deploy failed on all 3 attempts"
+            exit 1
+          fi
 
       - name: Fail only on a sustained outage
         if: steps.check.outcome == 'failure'
@@ -135,9 +193,9 @@ jobs:
       # A new commit on main gives Pages a fresh build version, so when the
       # live copy is badly behind this run, push an empty commit to main.
       - name: Verify live site and self-heal
-        if: always() && steps.deployment.outcome == 'success'
+        if: always() && steps.deploy_result.outputs.success == 'true'
         env:
-          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          PAGE_URL: ${{ steps.deploy_result.outputs.page_url }}
         run: |
           set +e
           python3 - <<'PY'
